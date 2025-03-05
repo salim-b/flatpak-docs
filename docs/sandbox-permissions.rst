@@ -215,17 +215,17 @@ Other filesystem access guidelines include:
 Reserved Paths
 ``````````````
 
-The following paths and subpaths of them are reserved and asking access
+The following paths and their subpaths are reserved and asking access
 to them with ``--filesystem`` will have no effect::
 
 /app, /bin, /dev, /etc, /lib, /lib32, /lib64, /proc, /run/flatpak, /run/host, /sbin, /usr
 
-The entire ``/run`` is not allowed but all subpaths of ``/run`` except
+The entire ``/run`` is not allowed, but all subpaths of ``/run`` except
 ``/run/flatpak, /run/host`` are allowed to be exposed via
 ``--filesystem``. Additionally, if ``/var/run`` on the host is a symlink to
 ``../run``, exposing it or a subpath of it, is not allowed.
 
-Additionally the following directories from host need to be explicitly
+Additionally the following directories from the host need to be explicitly
 requested with ``--filesystem`` and are not available with
 ``home, host, host-os, host-etc`` by default:
 
@@ -238,7 +238,7 @@ requested with ``--filesystem`` and are not available with
 - ``/tmp``
 - ``/var`` - Note that by default ``/var/{cache, config, data, tmp}``
   inside the sandbox are the same as ``~/.var/app/$FLATPAK_ID/{cache, config, data, cache/tmp}``.
-  However an explicit ``--filesystem=/var`` will make only ``/var`` from
+  However, an explicit ``--filesystem=/var`` will make only ``/var`` from
   host available and those will no longer be available.
 - ``/var/lib/flatpak`` - ``/var`` does not give access to this.
 
